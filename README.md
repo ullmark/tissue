@@ -6,13 +6,22 @@ application entirely client side, but for OAuth token, it uses
 [SocketStream][] Pub/Sub.
 
 Mostly it's about playing around with [Nodejs][node], [SocketStream][], [Backbone][] and
-some other stuff like [Docco][]
+some other stuff like @justindujardin branch of [Docco][].
 
+## Documentation
 Annotated source can be found [here][docs].
+
+## Running the application
+To run the application up and running do the following
+
+1. Follow the instructions and install [SocketStream][]
+2. Clone the repository `git clone git://github.com/ullmark/tissue.git`
+3. Install dependencies `npm install`
+4. Link [SocketStream][] `npm link socketstream`
 
 [gapi]: http://developer.github.com/v3/
 [node]: http://nodejs.org
 [SocketStream]: https://github.com/socketstream/socketstream
 [Backbone]: http://backbonejs.org/
-[Docco]: https://github.com/jashkenas/docco
-[docs]: /docs
+[Docco]: https://github.com/justindujardin/docco
+[docs]: https://github.com/ullmark/tissue/tree/master/docs
