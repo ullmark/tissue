@@ -1,6 +1,8 @@
 
 // RPC: Authentication
 // -------------------
+// This Pub/Sub Component handles the OAuth authentication
+// against GitHub.
 
 exports.actions = function(req, res, ss) {
   return {

@@ -1,8 +1,8 @@
 {
-  "name": "demo",
-  "description": "An awesome real time application",
+  "name": "Tissue",
+  "description": "A minimalistic client side Github Issues app.",
   "version": "0.0.1",
-  "author": "Me <me@mydomain.com>",
+  "author": "Markus Ullmark",
   "private": true,
   "engines": { "node": ">= 0.6.0" },
   "dependencies": {

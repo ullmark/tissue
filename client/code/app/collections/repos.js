@@ -4,6 +4,6 @@ var Repo = require('../models/repo');
 // ---------------
 
 module.exports = Backbone.Collection.extend({
-  // ... contains Repo's
+  // ... contains Repos
   model: Repo
 });

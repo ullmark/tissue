@@ -1,7 +1,20 @@
 
 // Models: Issue
 // -------------
+// This model maps is used against GitHubs [Issue](http://developer.github.com/v3/issues/)
+// response
 
 module.exports = Backbone.Model.extend({
-  idAttribute: 'number'
+
+  // The identifier used by github is the **number** property
+  // by setting the idAttibute we make backbone aware of this.
+  idAttribute: 'number',
+
+  // ## Issue Syncing
+  // We override Backbones Default syncing to work with
+  // githubs api
+  sync: function(method, model, options) {
+
+  }
+
 });
