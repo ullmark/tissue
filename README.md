@@ -8,6 +8,9 @@ application entirely client side, but for OAuth token, it uses
 Mostly it's about playing around with [Nodejs][node], [SocketStream][], [Backbone][] and
 some other stuff like @justindujardin branch of [Docco][].
 
+Oh, and it's entirely styled using [Twitter Bootstrap][bootstrap], so
+sorry those of you who are starting to get tired of that look.
+
 ## Documentation
 Annotated source can be found [here][docs].
 
@@ -25,3 +28,4 @@ To run the application up and running do the following
 [Backbone]: http://backbonejs.org/
 [Docco]: https://github.com/justindujardin/docco
 [docs]: https://github.com/ullmark/tissue/tree/master/docs
+[bootstrap]: http://twitter.github.com/bootstrap/
