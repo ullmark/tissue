@@ -1,7 +1,7 @@
 var App = require('./views/app')
   , Router = require('./routers/router');
 
-// Our Applications Starting Point
+// Applications Starting Point
 // -------------------------------
 // We kick of the application by instantiating the App View
 // and our router

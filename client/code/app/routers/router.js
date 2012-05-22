@@ -4,53 +4,58 @@
 // This Backbone router controls the state of the application
 
 module.exports = Backbone.Router.extend({
+
   // GitHub OAuth v2. Client Key
   githubClientKey: 'fedd4b9d16560ee6cd35',
 
   // ...which handles the following routes
   routes: {
-    ""                            : "start",
-    "auth"                        : "auth",
-    "repos/:repo"                 : "repo",
-    "repos/:repo/issues/:issue"   : "issue",
+    ""                            : "startRoute",
+    "repos/:repo"                 : "repoRoute",
+    "repos/:repo/issues/:issue"   : "issueRoute",
+    "auth/?code=:code"            : "authRoute",
     "*splat"                      : "catchAll"
   },
 
   // When router is instantiated check for a GitHub auth token
   initalize: function() {
-    _.bindAll(this, 'auth', 'onAccessTokenRecieved');
+    _.bindAll(this, 'accessTokenRecieved');
   },
 
   // ### Route Handlers
 
-  start: function() {
+  startRoute: function() {
+    if (app.isAuthenticated()) {
+      $.ajax('https://api.github.com/user/repos?access_token=' + app.accessToken)
+        .done(function(data) {
+          console.log(data);
+        });
+    }
   },
 
   // Auth route is triggered by the return redirect
   // by githubs oauth
-  auth: function() {
-    // Get the code from the parameters
-    var code = '';
-    ss.rpc('auth.getAccessToken', code, this.onAccessTokenRecieved);
+  authRoute: function(code) {
+    var _this = this;
+    app.backgroundActionStarted();
+    ss.rpc('auth.getAccessToken', code, function(accessToken) {
+      // Assign the token to our app to be easily accessed
+      // globally
+      app.accessToken = accessToken;
+      app.backgroundActionEnded();
+      _this.navigate('/', { trigger: true });
+    });
   },
 
-  repo: function(repo) {
+  repoRoute: function(repo) {
   },
 
-  issue: function(repo, issue) {
+  issueRoute: function(repo, issue) {
   },
 
   // The catch all route is triggered when someone fiddles with the
   // url manually (or when the code does something it shouldn't ;-))
   catchAll: function(splat) {
-    this.navigate('', { trigger: true });
-  },
-
-  // ### Other Stuff
-
-  onAccessTokenRecieved: function() {
-    // When we've recieved a valid access token from
-    // github, navigate to the start
-    this.navigate('/', { trigger: true });
   }
+
 });
