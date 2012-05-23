@@ -8,7 +8,7 @@ module.exports = Backbone.Router.extend({
   // GitHub OAuth v2. Client Key
   githubClientKey: 'fedd4b9d16560ee6cd35',
 
-  // ...which handles the following routes
+  // Sandles the following routes
   routes: {
     ""                            : "startRoute",
     "repos/:repo"                 : "repoRoute",
@@ -19,17 +19,14 @@ module.exports = Backbone.Router.extend({
 
   // When router is instantiated check for a GitHub auth token
   initalize: function() {
-    _.bindAll(this, 'accessTokenRecieved');
+    _.bindAll(this);
   },
 
   // ### Route Handlers
 
   startRoute: function() {
-    if (app.isAuthenticated()) {
-      $.ajax('https://api.github.com/user/repos?access_token=' + app.accessToken)
-        .done(function(data) {
-          console.log(data);
-        });
+    if (app.accessToken) {
+      app.showOrganizations();
     }
   },
 
@@ -38,7 +35,7 @@ module.exports = Backbone.Router.extend({
   authRoute: function(code) {
     var _this = this;
     app.backgroundActionStarted();
-    ss.rpc('auth.getAccessToken', code, function(accessToken) {
+    ss.rpc('auth.createAccessToken', code, function(accessToken) {
       // Assign the token to our app to be easily accessed
       // globally
       app.accessToken = accessToken;

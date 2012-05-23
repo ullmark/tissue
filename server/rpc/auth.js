@@ -10,9 +10,16 @@ exports.actions = function(req, res, ss) {
 
   return {
 
+    // Gets the current access token
+    // if any
+    getAccessToken: function() {
+      res(req.session.accessToken);
+    },
+
     // Method to Recieve a Real Access Token
     // from Github
-    getAccessToken: function(code) {
+    createAccessToken: function(code) {
+
       var path = '/login/oauth/access_token';
       path += '?client_id=fedd4b9d16560ee6cd35';
       // yeah i know, will make a new app when i've solved configs
