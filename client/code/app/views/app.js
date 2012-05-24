@@ -1,5 +1,11 @@
+// Our requires
 var StartView = require('./start')
-  , WorkingView = require('./working');
+  , Task = require('../models/task')
+  , TaskRunningView = require('./taskRunning')
+  , OrganizationsView = require('./organizations');
+
+// We extend Backbone Views with our own animations
+require('./animations');
 
 // Views: App
 // ----------
@@ -15,11 +21,14 @@ module.exports = Backbone.View.extend({
   // views in the application
   initialize: function() {
     _.bindAll(this);
-    // Initialize the background actions counter
-    this.backgroundActions = 0;
-    // our Views
+
+    // Instantiate our Views
     this.start = new StartView;
-    this.workingNotification = new WorkingView;
+    this.organizations = new OrganizationsView;
+    this.taskRunning = new TaskRunningView({ model: new Task })
+
+    // ... and render those that need it
+    this.$el.append(this.taskRunning.render().el);
   },
 
   showOrganizations: function() {
@@ -35,17 +44,13 @@ module.exports = Backbone.View.extend({
   },
 
   // Flags that a background action has started
-  backgroundActionStarted: function() {
-    this.backgroundActions++;
-    this.workingNotification.show();
+  taskStarted: function() {
+    this.taskRunning.taskStarted();
   },
 
   // Flags that a background action has ended
-  backgroundActionEnded: function() {
-    this.backgroundActions--;
-    if (this.backgroundActions == 0) {
-      this.workingNotification.hide();
-    }
+  taskEnded: function() {
+    this.taskRunning.taskEnded();
   }
 
 });

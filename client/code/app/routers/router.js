@@ -34,12 +34,12 @@ module.exports = Backbone.Router.extend({
   // by githubs oauth
   authRoute: function(code) {
     var _this = this;
-    app.backgroundActionStarted();
+    app.taskStarted();
     ss.rpc('auth.createAccessToken', code, function(accessToken) {
       // Assign the token to our app to be easily accessed
       // globally
       app.accessToken = accessToken;
-      app.backgroundActionEnded();
+      app.taskEnded();
       _this.navigate('/', { trigger: true });
     });
   },

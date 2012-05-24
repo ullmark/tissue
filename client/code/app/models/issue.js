@@ -8,13 +8,6 @@ module.exports = Backbone.Model.extend({
 
   // The identifier used by github is the **number** property
   // by setting the idAttibute we make backbone aware of this.
-  idAttribute: 'number',
-
-  // ## Issue Syncing
-  // We override Backbones Default syncing to work with
-  // githubs api
-  sync: function(method, model, options) {
-
-  }
+  idAttribute: 'number'
 
 });
