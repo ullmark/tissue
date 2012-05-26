@@ -9,7 +9,7 @@ Backbone.sync = function(method, model, options) {
   var store = model.store || model.collection.store;
   switch (method) {
     case "create": return null;
-    case "read": return store.read(model);
+    case "read": return store.read(model, options);
     case "update": return null;
     case "delete": return null;
   }
