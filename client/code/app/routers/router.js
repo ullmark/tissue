@@ -1,8 +1,9 @@
 
-// Routers: Router
+// Tissue Router
 // ---------------
 // This Backbone router controls the state of the application
 
+// Extends [Router]()
 module.exports = Backbone.Router.extend({
 
   // GitHub OAuth v2. Client Key
@@ -10,11 +11,11 @@ module.exports = Backbone.Router.extend({
 
   // Sandles the following routes
   routes: {
-    ""                            : "startRoute",
-    "repos/:repo"                 : "repoRoute",
-    "repos/:repo/issues/:issue"   : "issueRoute",
-    "auth/?code=:code"            : "authRoute",
-    "*splat"                      : "catchAll"
+    ""                            : "start",
+    "repos"                       : "repos",
+    "repos/:repo"                 : "repo",
+    "repos/:repo/issues/:issue"   : "issue",
+    "auth/?code=:code"            : "auth",
   },
 
   // When router is instantiated check for a GitHub auth token

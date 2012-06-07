@@ -7,7 +7,5 @@ var Organization = require('../models/organization')
 
 module.exports = Backbone.Collection.extend({
   // ... contains Organizations
-  model: Organization,
-  // handle syncing with organization store
-  store: OrganizationStore
+  model: Organization
 });

@@ -1,4 +1,3 @@
-// Our requires
 var StartView = require('./start')
   , Task = require('../models/task')
   , TaskRunningView = require('./taskRunning')
