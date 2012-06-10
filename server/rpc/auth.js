@@ -2,6 +2,7 @@ var https = require('https');
 
 // RPC: Authentication
 // -------------------
+
 // This Pub/Sub Component handles the OAuth authentication
 // against GitHub.
 

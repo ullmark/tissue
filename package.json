@@ -15,6 +15,7 @@
   },
   "subdomain": "tissue",
   "scripts": {
-    "start": "app.js"
+    "start": "app.js",
+    "test": "mocha"
   }
 }
